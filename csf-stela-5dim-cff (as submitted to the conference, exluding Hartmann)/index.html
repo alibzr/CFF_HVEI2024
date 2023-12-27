@@ -1,0 +1,289 @@
+<html>
+<head>
+<title>csf-stela-5dim-cff</title>
+
+<script type="text/javascript">
+function detectLeftButton(evt) {
+    evt = evt || window.event;
+    var button = evt.which || evt.button;
+    return button == 1;
+}
+</script>
+<link rel="stylesheet" type="text/css" href="style.css"></head>
+
+<body>
+<h1>5-dimensional CSFs and CFF: spatial and temporal frequency, luminance, size and eccentricity</h1>
+<h2>Fitting error</h2>
+<TABLE>
+<tr><td rowspan="2">Dataset</td>
+<td colspan="2">Fitting error</td>
+<td colspan="2">Sensitivity adjustment</td>
+</tr>
+<tr><td><a href="#stela-csf">stelaCSF</a></td>
+<td><a href="#stela-csf-mod">stelaCSF-mod</a></td>
+<td><a href="#stela-csf">stelaCSF</a></td>
+<td><a href="#stela-csf-mod">stelaCSF-mod</a></td>
+</tr>
+<tr><td>Average training</td>
+<td>4.74 [dB]</td>
+<td>4.41 [dB]</td>
+<td>N/A</td>
+<td>N/A</td>
+</tr>
+<tr><td><a href="#modelfest">modelfest</a></td>
+<td>3.26 [dB]</td>
+<td>3.29 [dB]</td>
+<td>1.000</td>
+<td>1.000</td>
+</tr>
+<tr><td><a href="#hdrvdp_csf">hdrvdp_csf</a></td>
+<td>3.65 [dB]</td>
+<td>3.55 [dB]</td>
+<td>1.555</td>
+<td>1.298</td>
+</tr>
+<tr><td><a href="#hdr_csf">hdr_csf</a></td>
+<td>3.46 [dB]</td>
+<td>3.47 [dB]</td>
+<td>0.824</td>
+<td>0.703</td>
+</tr>
+<tr><td><a href="#rovamo1993">rovamo1993</a></td>
+<td>2.70 [dB]</td>
+<td>2.73 [dB]</td>
+<td>1.762</td>
+<td>1.546</td>
+</tr>
+<tr><td><a href="#robson1966">robson1966</a></td>
+<td>3.06 [dB]</td>
+<td>3.15 [dB]</td>
+<td>1.027</td>
+<td>1.057</td>
+</tr>
+<tr><td><a href="#laird2006">laird2006</a></td>
+<td>5.92 [dB]</td>
+<td>6.30 [dB]</td>
+<td>0.801</td>
+<td>0.769</td>
+</tr>
+<tr><td><a href="#snowden1995">snowden1995</a></td>
+<td>5.41 [dB]</td>
+<td>5.35 [dB]</td>
+<td>0.721</td>
+<td>0.955</td>
+</tr>
+<tr><td><a href="#virsu1979">virsu1979</a></td>
+<td>6.60 [dB]</td>
+<td>5.71 [dB]</td>
+<td>1.137</td>
+<td>1.133</td>
+</tr>
+<tr><td><a href="#virsu1982">virsu1982</a></td>
+<td>4.75 [dB]</td>
+<td>4.25 [dB]</td>
+<td>1.078</td>
+<td>1.164</td>
+</tr>
+<tr><td><a href="#wright1983">wright1983</a></td>
+<td>2.79 [dB]</td>
+<td>3.04 [dB]</td>
+<td>0.710</td>
+<td>0.662</td>
+</tr>
+<tr><td><a href="#anderson1991">anderson1991</a></td>
+<td>8.15 [dB]</td>
+<td>7.30 [dB]</td>
+<td>1.811</td>
+<td>2.674</td>
+</tr>
+<tr><td><a href="#krajancich2021">krajancich2021</a></td>
+<td>10.24 [dB]</td>
+<td>7.42 [dB]</td>
+<td>4.131</td>
+<td>2.616</td>
+</tr>
+<tr><td><a href="#hecht1933">hecht1933</a></td>
+<td>4.89 [dB]</td>
+<td>3.52 [dB]</td>
+<td>0.420</td>
+<td>0.574</td>
+</tr>
+<tr><td><a href="#hvei_cff2022">hvei_cff2022</a></td>
+<td>4.64 [dB]</td>
+<td>3.61 [dB]</td>
+<td>0.246</td>
+<td>0.298</td>
+</tr>
+<tr><td><a href="#deLange1958b">deLange1958b</a></td>
+<td>3.33 [dB]</td>
+<td>2.56 [dB]</td>
+<td>0.941</td>
+<td>1.288</td>
+</tr>
+</TABLE>
+<h2>Model comparison statistics</h2>
+<TABLE>
+<tr><td rowspan="2" colspan="1">Model</td>
+<td rowspan="2" colspan="1">Sum of Square Errors (SS)</td>
+<td rowspan="2" colspan="1">Degrees of freedom (df)</td>
+<td colspan="2">F-test</td>
+<td rowspan="2" colspan="1">AIC</td>
+</tr>
+<tr><td>F-statistic</td>
+<td>p-value</td>
+</tr>
+<tr><td><a href="#stela-csf">stelaCSF (Reference Model)</a></td>
+<td>57.768</td>
+<td>831</td>
+<td>N/A</td>
+<td>N/A</td>
+<td>-2274.65</td>
+</tr>
+<tr><td><a href="#stela-csf-mod">stelaCSF-mod</a></td>
+<td>47.277</td>
+<td>828</td>
+<td>50.3035</td>
+<td>0.0000 &check;</td>
+<td>-2442.2</td>
+</tr>
+</TABLE>
+<p>
+We use AIC and F-test to test whether the difference in fitting error is statistically significant at alpha=0.05 level. Both statistical metrics take the number of optimized parameters into account. 
+</p>
+
+<p>
+<b>F-test</b>: For F-test, we compare the fitting results from stelaCSF with those of other models. The F-static is calculated using the residual sum of squares and degrees of freedom (number of data points - number of optimized parameters) from both models. The corresponding p-value indicates whether or not the null hypothesis is rejected, where H<sub>0</sub>: the stelaCSF does not provide significant better fit than the other model. The p-values less than 0.05 indicates that stelaCSF provides a better fit to the data at the significance level of 0.05 (marked with &check;). We performed the F-test for all individual datasets as well as for all datasets combined. For smaller datasets, where the number of data points are comparable to the number of model parameters, F-test can not provide any results since it indicates there is more variance within the models' fits than between.  
+</p>
+
+<p>
+<b>AIC</b>: Akaike information criterion is a statistical estimator of prediction error and relative quality of the models, which accounts for the number of parameters of each model. 
+The model with the lower AIC score is considered to be better and with a good balance of error value and the number of parameters.  
+</p>
+
+<p>
+The sensitivity adjustment column contains a multiplier that is used to adjust the sensitivity of each datasets. It corresponds to <i>s<sub>d</sub></i> in the paper (Eq. 18).
+</p>
+<h2>Model parameters</h2>
+<div class="params_frame">
+<div align="center">stelaCSF</div>
+<div style="white-space: pre-line;">
+	p.ach_sust.S_max = [ 57.6634 90.5523 0.170302 8.36556e-07 6.9238e+09 ];
+	p.ach_sust.f_max = [ 1.54334 11.5343 0.281658 ];
+	p.ach_sust.bw = 0.000219776;
+	p.ach_sust.a = 0.0601772;
+	p.ach_trans.S_max = [ 0.437888 216.512 ];
+	p.ach_trans.f_max = 0.00199546;
+	p.ach_trans.bw = 2.47976;
+	p.ach_trans.a = 0.000272618;
+	p.sigma_trans = 0.129405;
+	p.sigma_sust = 5.3266;
+	p.ecc_drop = 0.0155263;
+	p.ecc_drop_nasal = 0.00916517;
+	p.ecc_drop_f = 0.0196221;
+	p.ecc_drop_f_nasal = 0.0161568;
+</div>
+</div>
+<div class="params_frame">
+<div align="center">stelaCSF-mod</div>
+<div style="white-space: pre-line;">
+	p.ach_sust.S_max = [ 69.2026 144.747 0.155582 7.09705e-07 7.91791e+09 ];
+	p.ach_sust.f_max = [ 1.51079 9.40093 0.287417 ];
+	p.ach_sust.bw = 0.000220052;
+	p.ach_sust.a = 0.0517392;
+	p.ach_trans.S_max = [ 20825.9 168.778 0.587553 ];
+	p.ach_trans.f_max = 9.6569e-05;
+	p.ach_trans.bw = 2.9598;
+	p.ach_trans.a = 0.000271836;
+	p.sigma_trans = 0.117623;
+	p.sigma_sust = 2.16508;
+	p.ecc_drop = 0.0257862;
+	p.ecc_drop_nasal = 0.0154559;
+	p.ecc_drop_f = 0.0186447;
+	p.ecc_drop_f_nasal = 0.0156339;
+	p.S1 = 0.000169327;
+	p.S2 = 94.8073;
+</div>
+</div>
+<h2>Legend</h2>
+<p>To keep the plots legible, only up to 3 models are plotted.</p>
+<img src="legend.png"/>
+<h2 id="modelfest"><a class="top_align_button" href="#modelfest">&#8632;</a>Dataset: [modelfest] ModelFest</h2>
+<div>Achromatic CSF as a function of frequency<br/>
+<img src="fig_modelfest_1.png"/>
+<br/></div>
+<h2 id="hdrvdp_csf"><a class="top_align_button" href="#hdrvdp_csf">&#8632;</a>Dataset: [hdrvdp_csf] HDR-VDP CSF</h2>
+<div>Achromatic CSF as a function of frequency<br/>
+<img src="fig_hdrvdp_csf_1.png"/>
+<br/></div>
+<div>Achromatic CSF as a function of size<br/>
+<img src="fig_hdrvdp_csf_2.png"/>
+<br/></div>
+<h2 id="hdr_csf"><a class="top_align_button" href="#hdr_csf">&#8632;</a>Dataset: [hdr_csf] High Dynamic Range CSF</h2>
+<div>CSF as the function of frequency at different luminance levels (fixed number of cycles)<br/>
+<img src="fig_hdr_csf_1.png"/>
+<br/></div>
+<div>CSF for different number of cycles<br/>
+<img src="fig_hdr_csf_2.png"/>
+<br/></div>
+<h2 id="rovamo1993"><a class="top_align_button" href="#rovamo1993">&#8632;</a>Dataset: [rovamo1993] Rovamo et al. 1993</h2>
+<div>CSF as the funcation of stimulus area<br/>
+<img src="fig_rovamo1993_1.png"/>
+<br/></div>
+<h2 id="robson1966"><a class="top_align_button" href="#robson1966">&#8632;</a>Dataset: [robson1966] Robson 1966</h2>
+<div>Spatial CSF for different temporal frequencies<br/>
+<img src="fig_robson1966_1.png"/>
+<br/></div>
+<div>Temporal CSF for different spatial frequencies<br/>
+<img src="fig_robson1966_2.png"/>
+<br/></div>
+<h2 id="laird2006"><a class="top_align_button" href="#laird2006">&#8632;</a>Dataset: [laird2006] Laird et al. 2006</h2>
+<div>Achromatic CSF as a function of temporal frequency for different spatial frequencies<br/>
+<img src="fig_laird2006_1.png"/>
+<br/></div>
+<h2 id="snowden1995"><a class="top_align_button" href="#snowden1995">&#8632;</a>Dataset: [snowden1995] Snowden et al. 1995</h2>
+<div>Temporal contrast sensitivity at different spatial frequencies and luminance levels<br/>
+<img src="fig_snowden1995_1.png"/>
+<br/></div>
+<h2 id="virsu1979"><a class="top_align_button" href="#virsu1979">&#8632;</a>Dataset: [virsu1979] Virsu & Rovamo 1979</h2>
+<div>Contrast sensitivity of central and peripheral vision as a function of spatial frequency and eccentricity<br/>
+<img src="fig_virsu1979_1.png"/>
+<br/></div>
+<h2 id="virsu1982"><a class="top_align_button" href="#virsu1982">&#8632;</a>Dataset: [virsu1982] Virsu et al. 1982</h2>
+<div>Contrast sensitivity as the function of frequency<br/>
+<img src="fig_virsu1982_1.png"/>
+<br/></div>
+<div>Contrast sensitivity as the function of eccentricity<br/>
+<img src="fig_virsu1982_2.png"/>
+<br/></div>
+<h2 id="wright1983"><a class="top_align_button" href="#wright1983">&#8632;</a>Dataset: [wright1983] Wright and Johnson 1983</h2>
+<div>CSF as function of eccentricity<br/>
+<img src="fig_wright1983_1.png"/>
+<br/></div>
+<h2 id="anderson1991"><a class="top_align_button" href="#anderson1991">&#8632;</a>Dataset: [anderson1991] Anderson et al. 1991</h2>
+<div>Contrast sensitivity as the function of retinal visual field (at 8 Hz)<br/>
+<img src="fig_anderson1991_1.png"/>
+<br/></div>
+<h2 id="krajancich2021"><a class="top_align_button" href="#krajancich2021">&#8632;</a>Dataset: [krajancich2021] Krajancich et al. 2021</h2>
+<div>Critical fusion frequency at eccentricities<br/>
+<img src="fig_krajancich2021_1.png"/>
+<br/></div>
+<div>CFF at luminance levels for 0.57 cpd<br/>
+<img src="fig_krajancich2021_2.png"/>
+<br/></div>
+<div>CFF at luminance levels, foveal vision (ecc=0)<br/>
+<img src="fig_krajancich2021_3.png"/>
+<br/></div>
+<h2 id="hecht1933"><a class="top_align_button" href="#hecht1933">&#8632;</a>Dataset: [hecht1933] Hecht 1933</h2>
+<div>CFF for white light as a function of luminance and eccentricity<br/>
+<img src="fig_hecht1933_1.png"/>
+<br/></div>
+<h2 id="hvei_cff2022"><a class="top_align_button" href="#hvei_cff2022">&#8632;</a>Dataset: [hvei_cff2022] HVEI CFF 2022</h2>
+<div>CFF for white light as a function of luminance and eccentricity<br/>
+<img src="fig_hvei_cff2022_1.png"/>
+<br/></div>
+<h2 id="deLange1958b"><a class="top_align_button" href="#deLange1958b">&#8632;</a>Dataset: [deLange1958b] De Lange 1958</h2>
+<div>CFF for white light as a function of luminance<br/>
+<img src="fig_deLange1958b_1.png"/>
+<br/></div>
+</body>
+</html>
